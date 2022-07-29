@@ -4,6 +4,8 @@ import Search from "./components/search/Search";
 import { WEATHER_API_URL, WEATHER_API_KEY, googleMapAPI } from "./Api";
 import { useState } from "react";
 import Forecast from "./components/forecast/Forecast";
+import { Box, SimpleGrid } from "@chakra-ui/react";
+
 // import { Map } from "./components/map/Map";
 
 function App() {
@@ -41,13 +43,13 @@ function App() {
   console.log(currentWeather);
   console.log(forecast);
   return (
-    <div className="container">
+    <Box className="container" width={"100%"}>
       <Search onSearchChange={handleOnSearchChange} />
       {currentWeather && <CurrentWeather data={currentWeather} />}
 
       {forecast && <Forecast data={forecast} />}
       {/* <Map data={map} /> */}
-    </div>
+    </Box>
   );
 }
 

@@ -1,4 +1,5 @@
 import React from "react";
+import { Box, Image, SimpleGrid, Text } from "@chakra-ui/react";
 import {
   Accordion,
   AccordionItem,
@@ -17,6 +18,7 @@ const WEEK_DAYS = [
   "Saturday",
   "Sunday",
 ];
+const d = new Date();
 
 const Forecast = ({ data }) => {
   const dayInAWeek = new Date().getDay();
@@ -27,59 +29,67 @@ const Forecast = ({ data }) => {
   return (
     <>
       <label className="title">Daily</label>
-      <Accordion allowZeroExpanded>
+
+      <SimpleGrid columns={7} spacing={50} width="100%">
         {data.list.splice(0, 7).map((item, idx) => (
-          <AccordionItem key={idx}>
-            <AccordionItemHeading>
-              <AccordionItemButton>
-                <div className="daily-item">
-                  <img
-                    src={`icons/${item.weather[0].icon}.png`}
-                    className="icon-small"
-                    alt="weather"
-                  />
-                  <label className="day">{forecastDays[idx]}</label>
-                  <label className="description">
-                    {item.weather[0].description}
-                  </label>
-                  <label className="min-max">
-                    {Math.round(item.main.temp_max)}°C /
-                    {Math.round(item.main.temp_min)}°C
-                  </label>
-                </div>
-              </AccordionItemButton>
-            </AccordionItemHeading>
-            <AccordionItemPanel>
-              <div className="daily-details-grid">
-                <div className="daily-details-grid-item">
-                  <label>Pressure:</label>
-                  <label>{item.main.pressure}</label>
-                </div>
-                <div className="daily-details-grid-item">
-                  <label>Humidity:</label>
-                  <label>{item.main.humidity}</label>
-                </div>
-                <div className="daily-details-grid-item">
-                  <label>Clouds:</label>
-                  <label>{item.clouds.all}%</label>
-                </div>
-                <div className="daily-details-grid-item">
-                  <label>Wind speed:</label>
-                  <label>{item.wind.speed} m/s</label>
-                </div>
-                <div className="daily-details-grid-item">
-                  <label>Sea level:</label>
-                  <label>{item.main.sea_level}m</label>
-                </div>
-                <div className="daily-details-grid-item">
-                  <label>Feels like:</label>
-                  <label>{item.main.feels_like}°C</label>
-                </div>
+          <Box
+            key={idx}
+            width="100%"
+            mr={20}
+            boxShadow=" rgba(0, 0, 0, 0.35) 0px 5px 25px"
+          >
+            {/* <AccordionItemHeading> */}
+
+            <div className="daily-item">
+              <Text></Text>
+              <label className="day">{forecastDays[idx]}</label>
+              <Image
+                borderRadius="full"
+                boxSize="50px"
+                src={`icons/${item.weather[0].icon}.png`}
+                alt="weather"
+              />
+
+              <label className="description">
+                {item.weather[0].description}
+              </label>
+              <label className="min-max">
+                {Math.round(item.main.temp_max)}°C /
+                {Math.round(item.main.temp_min)}°C
+              </label>
+            </div>
+
+            <div className="daily-details-grid">
+              <div className="daily-details-grid-item">
+                <label>Pressure:</label>
+                <label>{item.main.pressure}</label>
               </div>
-            </AccordionItemPanel>
-          </AccordionItem>
+              <div className="daily-details-grid-item">
+                <label>Humidity:</label>
+                <label>{item.main.humidity}</label>
+              </div>
+              <div className="daily-details-grid-item">
+                <label>Clouds:</label>
+                <label>{item.clouds.all}%</label>
+              </div>
+              <div className="daily-details-grid-item">
+                <label>Wind speed:</label>
+                <label>{item.wind.speed} m/s</label>
+              </div>
+              <div className="daily-details-grid-item">
+                <label>Sea level:</label>
+                <label>{item.main.sea_level}m</label>
+              </div>
+              <div className="daily-details-grid-item">
+                <label>Feels like:</label>
+                <label>{item.main.feels_like}°C</label>
+              </div>
+            </div>
+
+            {/* </AccordionItemHeading> */}
+          </Box>
         ))}
-      </Accordion>
+      </SimpleGrid>
     </>
   );
 };
