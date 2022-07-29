@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Image, SimpleGrid, Text } from "@chakra-ui/react";
+import { Box, Center, Image, SimpleGrid, Text } from "@chakra-ui/react";
 import {
   Accordion,
   AccordionItem,
@@ -18,7 +18,12 @@ const WEEK_DAYS = [
   "Saturday",
   "Sunday",
 ];
-const d = new Date();
+
+// const d = new Date();
+
+// const date = d.getDate();
+// const month = d.getMonth() + 1;
+// const year = d.getFullYear();
 
 const Forecast = ({ data }) => {
   const dayInAWeek = new Date().getDay();
@@ -28,21 +33,23 @@ const Forecast = ({ data }) => {
 
   return (
     <>
-      <label className="title">Daily</label>
+      <Text className="title">Daily ForeCast</Text>
 
-      <SimpleGrid columns={7} spacing={50} width="100%">
-        {data.list.splice(0, 7).map((item, idx) => (
+      <SimpleGrid columns={7} spacing={30} width="100%">
+        {data.list.splice(0).map((item, idx) => (
           <Box
             key={idx}
             width="100%"
-            mr={20}
             boxShadow=" rgba(0, 0, 0, 0.35) 0px 5px 25px"
+            p={"10px"}
+            borderRadius="3xl"
           >
             {/* <AccordionItemHeading> */}
 
             <div className="daily-item">
-              <Text></Text>
-              <label className="day">{forecastDays[idx]}</label>
+              <Text className="day" fontWeight={"bold"}>
+                {forecastDays[idx]}
+              </Text>
               <Image
                 borderRadius="full"
                 boxSize="50px"
@@ -50,39 +57,29 @@ const Forecast = ({ data }) => {
                 alt="weather"
               />
 
-              <label className="description">
-                {item.weather[0].description}
-              </label>
-              <label className="min-max">
+              <Text className="description">{item.weather[0].description}</Text>
+              <Text className="min-max">
                 {Math.round(item.main.temp_max)}°C /
                 {Math.round(item.main.temp_min)}°C
-              </label>
+              </Text>
             </div>
 
             <div className="daily-details-grid">
               <div className="daily-details-grid-item">
-                <label>Pressure:</label>
-                <label>{item.main.pressure}</label>
+                <Text>Pressure:{item.main.pressure}</Text>
               </div>
               <div className="daily-details-grid-item">
-                <label>Humidity:</label>
-                <label>{item.main.humidity}</label>
+                <Text>Humidity:{item.main.humidity}</Text>
               </div>
               <div className="daily-details-grid-item">
-                <label>Clouds:</label>
-                <label>{item.clouds.all}%</label>
+                <Text>Clouds:{item.clouds.all}%</Text>
               </div>
               <div className="daily-details-grid-item">
-                <label>Wind speed:</label>
-                <label>{item.wind.speed} m/s</label>
+                <Text>Wind speed:{item.wind.speed} m/s</Text>
               </div>
+
               <div className="daily-details-grid-item">
-                <label>Sea level:</label>
-                <label>{item.main.sea_level}m</label>
-              </div>
-              <div className="daily-details-grid-item">
-                <label>Feels like:</label>
-                <label>{item.main.feels_like}°C</label>
+                <Text>Feels like:{item.main.feels_like}°C</Text>
               </div>
             </div>
 
