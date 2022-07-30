@@ -4,7 +4,7 @@ import { geoApiOptions, GEO_API_URL } from "../../Api";
 
 const Search = ({ onSearchChange }) => {
   const [search, setSearch] = useState(null);
-
+  let url;
   const loadOptions = (inputValue) => {
     return fetch(
       `${GEO_API_URL}/cities?minPopulation=1000000&namePrefix=${inputValue}`,
@@ -27,6 +27,15 @@ const Search = ({ onSearchChange }) => {
     setSearch(searchData);
     onSearchChange(searchData);
   };
+
+  // const Map = () => {
+  //   return (
+  //     <div>
+  //       {" "}
+  //       <iframe src={mapUrl} width="400" height="300"></iframe>
+  //     </div>
+  //   );
+  // };
 
   return (
     <AsyncPaginate

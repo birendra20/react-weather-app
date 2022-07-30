@@ -4,7 +4,7 @@ import Search from "./components/search/Search";
 import { WEATHER_API_URL, WEATHER_API_KEY, googleMapAPI } from "./Api";
 import { useState } from "react";
 import Forecast from "./components/forecast/Forecast";
-import { Box, SimpleGrid } from "@chakra-ui/react";
+import { Box, Divider, SimpleGrid } from "@chakra-ui/react";
 
 // import { Map } from "./components/map/Map";
 
@@ -15,6 +15,7 @@ function App() {
 
   const handleOnSearchChange = (searchData) => {
     const [lat, lon] = searchData.value.split(" ");
+
     // https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API key}
 
     const currentWeatherFetch = fetch(
@@ -48,7 +49,6 @@ function App() {
       {currentWeather && <CurrentWeather data={currentWeather} />}
 
       {forecast && <Forecast data={forecast} />}
-      {/* <Map data={map} /> */}
     </Box>
   );
 }

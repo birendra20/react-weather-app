@@ -36,10 +36,10 @@ const Forecast = ({ data }) => {
       <Text className="title">Daily ForeCast</Text>
 
       <SimpleGrid columns={7} spacing={30} width="100%">
-        {data.list.splice(0).map((item, idx) => (
+        {data.list.splice(0, 7).map((item, idx) => (
           <Box
             key={idx}
-            width="100%"
+            width="110%"
             boxShadow=" rgba(0, 0, 0, 0.35) 0px 5px 25px"
             p={"10px"}
             borderRadius="3xl"
@@ -47,7 +47,7 @@ const Forecast = ({ data }) => {
             {/* <AccordionItemHeading> */}
 
             <div className="daily-item">
-              <Text className="day" fontWeight={"bold"}>
+              <Text className="day" fontStyle={"bolder"}>
                 {forecastDays[idx]}
               </Text>
               <Image
@@ -75,7 +75,7 @@ const Forecast = ({ data }) => {
                 <Text>Clouds:{item.clouds.all}%</Text>
               </div>
               <div className="daily-details-grid-item">
-                <Text>Wind speed:{item.wind.speed} m/s</Text>
+                <Text>Wind speed:{item.wind.speed}m/s</Text>
               </div>
 
               <div className="daily-details-grid-item">
