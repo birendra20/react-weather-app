@@ -46,9 +46,23 @@ function App() {
   return (
     <Box className="container" width={"100%"}>
       <Search onSearchChange={handleOnSearchChange} />
-      {currentWeather && <CurrentWeather data={currentWeather} />}
 
-      {forecast && <Forecast data={forecast} />}
+      <SimpleGrid columns={[1, 2]} spacing={10} display="flex">
+        <Box> {currentWeather && <CurrentWeather data={currentWeather} />}</Box>
+
+        {/* <Box width={"120%"} m="7">
+          <iframe
+            title="gmap"
+            border-radius="25px"
+            name="gMap"
+            height="350px"
+            width="700px"
+            className="gmap_iframe"
+            src={`https://maps.google.com/maps?q=${currentWeather.city}&t=&z=13&ie=UTF8&iwloc=&output=embed`}
+          ></iframe>
+        </Box> */}
+      </SimpleGrid>
+      <Box>{forecast && <Forecast data={forecast} />}</Box>
     </Box>
   );
 }

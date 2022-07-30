@@ -1,5 +1,12 @@
 import React from "react";
-import { Box, Center, Image, SimpleGrid, Text } from "@chakra-ui/react";
+import {
+  Box,
+  Center,
+  Heading,
+  Image,
+  SimpleGrid,
+  Text,
+} from "@chakra-ui/react";
 import {
   Accordion,
   AccordionItem,
@@ -33,16 +40,16 @@ const Forecast = ({ data }) => {
 
   return (
     <>
-      <Text className="title">Daily ForeCast</Text>
+      <Heading mb="5px">Daily ForeCast</Heading>
 
-      <SimpleGrid columns={7} spacing={30} width="100%">
+      <SimpleGrid columns={[1, 2, 3, 4, 7]} spacing={30}>
         {data.list.splice(0, 7).map((item, idx) => (
           <Box
             key={idx}
-            width="110%"
             boxShadow=" rgba(0, 0, 0, 0.35) 0px 5px 25px"
             p={"10px"}
             borderRadius="3xl"
+            width={"150px"}
           >
             {/* <AccordionItemHeading> */}
 
